@@ -58,14 +58,48 @@ class PersonalMenuViewlet(MenuViewlet):
     uvclight.viewletmanager(managers.IPageTop)
     uvclight.order(20)
     menu = menus.PersonalMenu
+    template = get_template('personalpreferencestemplate.cpt')
 
-    
+    name = u'Personal menu'
+
+    def getFooter(self):
+        menu = menus.FooterMenu(self.context, self.request, self.view)
+        menu.update()
+        return menu.entries
+
+    def getPersonal(self):
+        menu = menus.PersonalMenu(self.context, self.request, self.view)
+        menu.update()
+        return menu.entries
+
+
 class NavigationMenuViewlet(MenuViewlet):
     uvclight.viewletmanager(Navigation)
     uvclight.order(30)
     menu = menus.NavigationMenu
+    template = get_template('navigationtemplate.cpt')
 
-    
+    id = u'globalmenuviewlet'
+
+    def getNavigation(self):
+        menu = menus.NavigationMenu(self.context, self.request, self.view)
+        menu.update()
+        return menu.entries
+
+    def getUser(self):
+        menu = menus.UserMenu(self.context, self.request, self.view)
+        menu.update()
+        return menu.entries
+
+    def getRenderableItems(self):
+       return list()
+
+    def getQuicklinks(self):
+        menu = menus.Quicklinks(self.context, self.request, self.view)
+        menu.update()
+        return menu.entries
+
+
 class FlashMessages(uvclight.Viewlet):
     uvclight.order(2)
     uvclight.layer(IDGUVRequest)
@@ -79,16 +113,5 @@ class FlashMessages(uvclight.Viewlet):
 @adapter(menus.IGlobalMenu, interface.Interface)
 @implementer(ITemplate)
 def global_template(context, request):
-    return uvclight.get_template('globalmenu.cpt', __file__)
+    return get_template('globalmenutemplate.cpt')
 
-
-@adapter(menus.IPersonalMenu, interface.Interface)
-@implementer(ITemplate)
-def usermenu_template(context, request):
-    return uvclight.get_template('usermenu.cpt', __file__)
-
-
-@adapter(menus.INavigationMenu, interface.Interface)
-@implementer(ITemplate)
-def nav_template(context, request):
-    return uvclight.get_template('navtemplate.cpt', __file__)

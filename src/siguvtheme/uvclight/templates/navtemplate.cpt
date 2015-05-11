@@ -26,7 +26,7 @@
       </ul>
     </div>
 
-    <div id="main-nav" class="collapse navbar-collapse navbar-nav-collapse">
+    <div id="globalmenuviewlet" class="collapse navbar-collapse navbar-nav-collapse">
       <ul class="nav navbar-nav">
         <li class="active">
           <a tal:attributes="href request.script_name">

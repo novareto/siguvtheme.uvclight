@@ -3,7 +3,7 @@
 import uvclight
 from . import get_template
 from zope.interface import Interface
-from siguvtheme.resources import maincss, mainjs
+from siguvtheme.resources import maincss, mainjs, tune
 
 
 class Layout(uvclight.Layout):
@@ -16,6 +16,7 @@ class Layout(uvclight.Layout):
     def __call__(self, content, **ns):
         maincss.need()
         mainjs.need()
+        tune.need()
         site = uvclight.getSite()
         self.title = getattr(site, 'title', 'UVCLight')
         if 'view' in ns:
