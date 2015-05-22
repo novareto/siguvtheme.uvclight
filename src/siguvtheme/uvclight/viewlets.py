@@ -15,13 +15,44 @@ from zope import interface
 
 
 class Tabs(uvclight.ViewletManager):
-    uvclight.name('uvc-tabs')
+    uvclight.name('tabs')
     uvclight.context(uvclight.Interface)
+    uvclight.implements(managers.ITabs)
 
 
 class Navigation(uvclight.ViewletManager):
-    uvclight.name('siguv-nav')
+    uvclight.name('navigation')
     uvclight.context(uvclight.Interface)
+
+
+class PageTop(uvclight.ViewletManager):
+    uvclight.name('pagetop')
+    uvclight.context(uvclight.Interface)
+    uvclight.implements(managers.IPageTop)
+
+
+class Headers(uvclight.ViewletManager):
+    uvclight.name('headers')
+    uvclight.context(uvclight.Interface)
+    uvclight.implements(managers.IHeaders)
+
+
+class AboveContent(uvclight.ViewletManager):
+    uvclight.name('above-body')
+    uvclight.context(uvclight.Interface)
+    uvclight.implements(managers.IAboveContent)
+
+
+class BelowContent(uvclight.ViewletManager):
+    uvclight.name('below-body')
+    uvclight.context(uvclight.Interface)
+    uvclight.implements(managers.IBelowContent)
+
+
+class Footer(uvclight.ViewletManager):
+    uvclight.name('footer')
+    uvclight.context(uvclight.Interface)
+    uvclight.implements(managers.IFooter)
 
 
 class BGHeader(uvclight.Viewlet):
@@ -114,4 +145,3 @@ class FlashMessages(uvclight.Viewlet):
 @implementer(ITemplate)
 def global_template(context, request):
     return get_template('globalmenutemplate.cpt')
-
