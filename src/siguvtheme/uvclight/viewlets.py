@@ -104,6 +104,20 @@ class PersonalMenuViewlet(MenuViewlet):
         return menu.entries
 
 
+class DocumentActionsViewlet(MenuViewlet):
+    uvclight.viewletmanager(managers.IAboveContent)
+    uvclight.order(20)
+
+    template = get_template('documentactionstemplate.cpt')
+    name = u'Document actions'
+    id = u'documentactionsviewlet'
+
+    def update(self):
+        self.menu = menus.DocumentActionsMenu(
+            self.context, self.request, self.view)
+        self.menu.update()
+
+
 class NavigationMenuViewlet(MenuViewlet):
     uvclight.viewletmanager(Navigation)
     uvclight.order(30)
