@@ -60,7 +60,7 @@ class BGHeader(uvclight.Viewlet):
     uvclight.viewletmanager(managers.IPageTop)
     uvclight.order(30)
     template = get_template('bgheader.cpt')
-    
+
     def application_url(self):
         return self.view.application_url()
 
@@ -70,7 +70,7 @@ class ObjectActionMenuViewlet(MenuViewlet):
     uvclight.context(IContent)
     uvclight.order(10)
     menu = menus.ContextualActionsMenu
- 
+
 
 class AddMenuViewlet(MenuViewlet):
     uvclight.viewletmanager(managers.IAboveContent)
@@ -84,7 +84,7 @@ class GlobalMenuViewlet(MenuViewlet):
     uvclight.order(10)
     menu = menus.GlobalMenu
 
-    
+
 class PersonalMenuViewlet(MenuViewlet):
     uvclight.viewletmanager(managers.IPageTop)
     uvclight.order(20)
@@ -109,7 +109,7 @@ class DocumentActionsViewlet(MenuViewlet):
     uvclight.order(20)
 
     template = get_template('documentactionstemplate.cpt')
-    name = u'Document actions'
+    name = u'Aktion'
     id = u'documentactionsviewlet'
 
     def update(self):
