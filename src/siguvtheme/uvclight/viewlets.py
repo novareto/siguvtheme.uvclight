@@ -91,7 +91,7 @@ class PersonalMenuViewlet(MenuViewlet):
     menu = menus.PersonalMenu
     template = get_template('personalpreferencestemplate.cpt')
 
-    name = u'Personal menu'
+    name = u'Meine Einstellungen'
 
     def getFooter(self):
         menu = menus.FooterMenu(self.context, self.request, self.view)

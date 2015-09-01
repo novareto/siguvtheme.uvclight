@@ -1,6 +1,6 @@
 <form i18n:domain="dolmen.forms.base"
       novalidate="novalidate"
-      metal:define-macro="editformii" role="form" action="."
+      metal:define-macro="editform" role="form" action="."
       tal:attributes="action view.action_url;
                       id view.htmlId();
                       method view.formMethod;
@@ -47,8 +47,9 @@
     </div>
   </div>
   
-  <div class="actions" tal:repeat="widget view.actionWidgets" tal:condition="view.actionWidgets">
-      <tal:widget metal:define-macro="action-inline" tal:content="structure widget.render()" />
-  </div>
   
+    <div class="form-group" tal:condition="view.actionWidgets">
+               <tal:widget tal:repeat="widget view.actionWidgets" tal:content="structure widget.render()" />
+    </div>
+
 </form>
