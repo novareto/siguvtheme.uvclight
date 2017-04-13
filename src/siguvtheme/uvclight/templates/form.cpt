@@ -24,23 +24,13 @@
        metal:define-macro="form-fieldset"
        tal:condition="view.fieldWidgets">
     <div tal:repeat="widget view.fieldWidgets"
-         tal:attributes="class widget.error and 'form-group bs-callout bs-callout-danger has-error' or 'form-group'">
+         tal:attributes="id 'field-' + widget.htmlId(); class widget.error and 'form-group bs-callout bs-callout-danger has-error' or 'form-group'">
       <label class="field-label control-label" for="#"
              tal:attributes="for widget.htmlId()"
              tal:condition="widget.isVisible()">
         <span tal:content="widget.title"> </span>
         <span class="field-required" i18n:translate="" tal:condition="widget.required"> * </span>
       </label>
-      <!--
-      <tal:description tal:condition="widget.description">
-        <span href="" class="hilfe glyphicon glyphicon-question-sign"
-              data-placement="right" 
-              data-toggle="tooltip"
-              tal:attributes="title widget.description">
-
-        </span>
-      </tal:description>
-       -->
       <p tal:condition="widget.description" class="help-block" tal:content="widget.description" />
       <tal:widget metal:define-macro="field-inline" tal:content="structure widget.render()" />
       <p tal:condition="widget.error" class="field-error help-block" tal:content="widget.error.title" />
