@@ -8,7 +8,7 @@
 
   <h1 tal:condition="view.label" tal:content="view.label">Label</h1>
   <p tal:condition="view.description"
-     tal:content="view.description">Description</p>
+     tal:content="structure view.description">Description</p>
 
   <p class="form-status"
      tal:condition="view.status"
