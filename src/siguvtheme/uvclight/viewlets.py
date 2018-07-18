@@ -141,6 +141,12 @@ class NavigationMenuViewlet(MenuViewlet):
 
     def getQuicklinks(self):
         menu = menus.Quicklinks(self.context, self.request, self.view)
+        print menu
+        menu.update()
+        return menu.entries
+
+    def getFooter(self):
+        menu = menus.FooterMenu(self.context, self.request, self.view)
         menu.update()
         return menu.entries
 
